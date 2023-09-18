@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class = "home">
+<div class ="home-content">
+
+
+
+<section class="intro-section">
+  <div class="wrapper_outer">
+    <div class="wrapper">
+        <div class="typewriter">
+            <h1>Transport Tracker</h1>
+          </div>
+    </div>
+    
+      <div class ="wrapper">
+        <div class = "wrapper">
+            <a  href="{% url 'login' %}"><button type="button" class="btn btn-primary">Login</button></a>
+            <a href="{% url 'register' %}"><button type="button" class="btn btn-primary">Register</button></a>
+        </div>
+        
+       
+      
+    </div>
+</div>
+</section>
+</div>
+</div>
+
+
+{% endblock %}

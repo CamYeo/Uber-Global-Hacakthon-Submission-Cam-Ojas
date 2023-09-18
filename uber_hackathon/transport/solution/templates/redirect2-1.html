@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Data</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .progress-container {
+        width: 500px;
+        margin-right: 20px;
+        background-color: #ccc;
+        border: 1px solid #333;
+        margin-bottom: 10px;
+        height: 60px; /* Increased height to accommodate the images */
+        position: relative;
+      }
+
+      .progress-bar {
+        height: 100%;
+        transition: width 0.5s ease-in-out;
+        background-color: transparent;
+      }
+
+      .public-transport {
+        background-color: black; /* Green for public transport */
+        margin-left: 30px;
+      }
+
+      .ridesharing {
+        background-color: black; /* Orange for ridesharing */
+        margin-left: 30px;
+      }
+
+      .progress-label {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        padding-left: 10px;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* Image styles */
+      .image-overlay {
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .public-transport-image {
+        background-image: url("images/passengers-waiting-bus-city-queue-town-road-flat-vector-illustration-public-transport-urban-lifestyle_74855-8493.jpg.avif"); /* Replace with your image path */
+      }
+
+      .ridesharing-image {
+        background-image: url("images/Select.webp"); /* Replace with your image path */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-container">
+      <div class="progress-label">
+        Public Transport: <span class="public-transport-percentage">0%</span>
+      </div>
+      <div class="progress-bar public-transport" style="width: 45%"></div>
+      <div class="image-overlay public-transport-image"></div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-label">
+        Ridesharing: <span class="ridesharing-percentage">0%</span>
+      </div>
+      <div class="progress-bar ridesharing" style="width: 30%"></div>
+      <div class="image-overlay ridesharing-image"></div>
+    </div>
+
+    <script>
+      // Get the progress bars and label elements
+      const publicTransportProgressBar =
+        document.querySelector(".public-transport");
+      const ridesharingProgressBar = document.querySelector(".ridesharing");
+      const publicTransportPercentageLabel = document.querySelector(
+        ".public-transport-percentage"
+      );
+      const ridesharingPercentageLabel = document.querySelector(
+        ".ridesharing-percentage"
+      );
+
+      // Define the percentages for public transport and ridesharing (change these to your desired values)
+      const publicTransportPercentage = 45; // For example, 45%
+      const ridesharingPercentage = 30; // For example, 30%
+
+      // Update the progress bars and labels
+      function updateProgressBars() {
+        publicTransportProgressBar.style.width =
+          publicTransportPercentage + "%";
+        publicTransportPercentageLabel.textContent =
+          publicTransportPercentage + "%";
+
+        ridesharingProgressBar.style.width = ridesharingPercentage + "%";
+        ridesharingPercentageLabel.textContent = ridesharingPercentage + "%";
+      }
+
+      // Call the update function to set the initial percentages
+      updateProgressBars();
+    </script>
+  </body>
+</html>

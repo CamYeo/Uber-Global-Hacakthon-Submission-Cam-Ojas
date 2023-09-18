@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uber Global Hackathon</title>
+  </head>
+  <body style="background-color: black" ;>
+    <div>
+      <style>
+        .btn-lg {
+          padding: 10px 80px;
+          font-size: 20px;
+          border-radius: 10px;
+        }
+      </style>
+      <div class="fixed-bottom">
+        <div class="text-center">
+          <button type="button" class="btn btn-light btn-lg" id="button1">
+            Ridesharing
+          </button>
+          <button type="button" class="btn btn-light btn-lg" id="button2">
+            Public Transport
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="clickinfo">Click Information:</div>
+
+    <script>
+      //Javascript code for collecting click data
+      let button1Count = 0;
+      let button2Count = 0;
+      let isButton1Disabled = false;
+      let isButton2Disabled = false;
+
+      //Adding Event Listeners
+      const button1 = document.getElementById("button1");
+      const button2 = document.getElementById("button2");
+
+      button1.addEventListener("click", function () {
+        console.log(button1Count);
+        button1Count++;
+        updateClickInfo();
+        button1.disabled = true;
+        button2.disabled = true;
+      });
+
+      button2.addEventListener("click", function () {
+        console.log(button2Count);
+        button2Count++;
+        updateClickInfo();
+        button1.disabled = true;
+        button2.disabled = true;
+      });
+
+      //Timer functionality for buttons
+      function handleButtonClick(buttonNumber) {
+        if (buttonNumber === 1 && !isButton1Disabled) {
+          button1Count++;
+          isButton1Disabled = true;
+          updateClickInfo();
+          setTimeout(function () {
+            isButton1Disabled = false;
+          }, 3600000); // Allow clicks again after 1 hour
+        } else if (buttonNumber === 2 && !isButton2Disabled) {
+          button2Count++;
+          isButton2Disabled = true;
+          updateClickInfo();
+          setTimeout(function () {
+            isButton2Disabled = false;
+          }, 3600000); // Allow clicks again after 1 hour
+        }
+      }
+
+      function updateClickInfo() {
+        const clickInfo = document.getElementById("clickinfo");
+        clickInfo.innerHTML = `Button 1 Clicks: ${button1Count}<br>Button 2 Clicks: ${button2Count}`;
+      }
+    </script>
+  </body>
+</html>
